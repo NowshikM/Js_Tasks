@@ -155,15 +155,15 @@ let a = {
     "status": "success"
 }
 
-const op = [];
+const output = [];
 
 // console.log(a.data.findIndex((obj) => obj.name == "Convenience"))
 for (let i = 0; i < a.data.length; i++) {
     const { parameterVal, totPat, name } = a.data[i];
-    const ind = op.findIndex((obj) => obj.name == name)
-    ind >= 0 ? op[ind][parameterVal] = totPat : op.push({
+    const index = output.findIndex((object) => object.name == name)
+    index >= 0 ? output[index][parameterVal] = totPat : output.push({
         name,
         [parameterVal]: totPat
     })
 }
-console.log(op)
+console.log(output)
