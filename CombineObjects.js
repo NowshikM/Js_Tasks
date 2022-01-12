@@ -151,29 +151,19 @@ let a = {
             "parameterVal": "Excellent"
         }
     ],
-        "message": "Data Received",
-            "status": "success"
+    "message": "Data Received",
+    "status": "success"
 }
 
-let op=[],ln=a.data.length
+const op = [];
 
-console.log(a.data.findIndex((obj)=>obj.name=="Convenience"))
-for(let i=0;i<ln;i++){
-    let ind=op.findIndex((obj)=>obj.name==a.data[i].name)
-    if(ind>=0){
-        op[ind][a.data[i]['parameterVal']]=a.data[i]['totPat']
-    }
-    else{
-        let obj1={
-            "name": a.data[i]['name'],
-            "Poor": "0",
-            "Average": "0",
-            "Good": "0",
-            "Very Good": "0",
-            "Excellent": "0"
-        }
-        obj1[a.data[i]['parameterVal']]=a.data[i]['totPat']
-        op.push(obj1)
-    }
+// console.log(a.data.findIndex((obj) => obj.name == "Convenience"))
+for (let i = 0; i < a.data.length; i++) {
+    const { parameterVal, totPat, name } = a.data[i];
+    const ind = op.findIndex((obj) => obj.name == name)
+    ind >= 0 ? op[ind][parameterVal] = totPat : op.push({
+        name,
+        [parameterVal]: totPat
+    })
 }
 console.log(op)
